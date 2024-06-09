@@ -1,28 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br" dir="ltr">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width= <device-width>, initial-scale=1.0">
-  <title>Cadastro de Alunos - Home</title>
-  <link rel="stylesheet" type="text/css" href="home.css">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <meta charset="utf-8">
+  <title>Home - CadAluno</title>
+  <link rel="stylesheet" href="home.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="imagens/logo-cad-aluno.jpg" type="image/x-icon">
 </head>
 
 <body>
-  <div class="container">
-    <h2 style="margin-bottom: 20px;">Bem-vindo, professor!</h2>
-    <h6 style="margin-top: 5px;">Selecione uma das opções abaixo </h6>
-    <a href="index.html">
-      <button id="button">Cadastrar novo aluno</button>
-    </a>
-    <a href="gerenciamento.html">
-      <button id="button">Gerenciar aluno</button>
-    </a>
+  <div class="wrapper">
+    <div class="title-text">
+      <div class="title login">
+        Bem vindo ao CadAluno!
+      </div>
+    </div>
+    <div class="buttons-container">
+      <button class="custom-button" onclick="window.location.href='index.html'">Cadastrar novo aluno</button>
+      <button class="custom-button" onclick="window.location.href='s.html'">Gerenciar aluno</button>
+    </div>
   </div>
-
-
-
 </body>
 
 </html>
