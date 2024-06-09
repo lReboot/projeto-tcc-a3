@@ -1,28 +1,93 @@
-document.getElementById("CPF").addEventListener("input", function() {
-    var i = document.getElementById("CPF").value.length;
-    var str = document.getElementById("CPF").value
-    if (isNaN(Number(str.charAt(i-1)))) {
-        document.getElementById("CPF").value = str.substr(0, i-1)
+function correctionRG(input) {
+    // remove e substitui os caracteres que não são parte do rg
+    let rg = input.value.replace(/[^\dxX]/g, '');
+
+    if(rg.length > 9){
+        rg = rg.slice(0, 9);
     }
-});
 
-document.getElementById("RG").addEventListener("keyup", function(e) {
-    e.preventDefault();
-    var val = e.target.value;
-    val = val.replace(/^(\d{2}\.\d{3}\.\d{3}-\d|\d{9})$/);
-    e.target.value = val;
-});
+    //faz a formatação do RG informado
+    rg = rg.replace(/(\d{2})(\d)/, '$1.$2')
+    .replace(/(\d{2})\.(\d{3})(\d)/, '$1.$2.$3')
+    .replace(/(\d{2})\.(\d{3})\.(\d{3})([0-9Xx])/, '$1.$2.$3-$4');
 
-document.getElementById("CPF").addEventListener("keyup", function(e) {
-    e.preventDefault();
-    var val = e.target.value;
-    val = val.replace(/\D/g, '');
-    val = val.replace(/(\d{3})(\d)/, '$1.$2');
-    val = val.replace(/(\d{3})(\d)/, '$1.$2');
-    val = val.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
-    e.target.value = val;
-});
+    //insere o rg com as atualizações feitas pela expressão regular
+    input.value = rg;
+    }
 
+function validationRG(input) {
+    let rg = document.getElementById("rg").value;
+
+    // expressão para verificar se o dado é valido
+    let regex = /^\d{2}\.\d{3}\.\d{3}-[0-9Xx]$/;
+
+    // verifica se o RG segue o padrão da regex
+    let showResultRG = document.getElementById("showResultRG");
+    if (showResultRG = regex.test(rg)) {
+        showResultRG.textContent = "Válido\u2714\uFE0F";
+        showResultRG.style.color = "green";
+    } else {
+        showResultRG.textContent = "Inválido\u274C";
+        showResultRG.style.color = "red";
+  }
+}
+
+
+function correctionCPF(input){
+    let cpf = input.value.replace(/\D/g, '');
+    if(cpf.length > 11){
+        cpf = cpf.slice(0, 11);
+    }
+    cpf = cpf.replace(/(\d{3})(\d)/,'$1.$2')
+            .replace(/(\d{3})\.(\d{3})(\d)/,'$1.$2.$3')
+            .replace(/(\d{3})\.(\d{3})\.(\d{3})(\d{2})/,'$1.$2.$3-$4')
+
+    input.value = cpf;
+}
+
+function validationCPF(input){
+    let cpf = document.getElementById("cpf").value;
+    let regex = /(^\d{3}\.\d{3}\.\d{3}\-\d{2}$)/;
+    let showResultCPF = document.getElementById("showResultCPF");
+    if(resultCPF = regex.test(cpf)){
+        showResultCPF.textContent = "valido";
+        showResultCPF.style.color = "green";
+    }else{
+        showResultCPF.textContent = "invalido";
+        showResultCPF.style.color = "red"
+    }
+}
+function correctionRA(input){
+    let ra = input.value.replace(/\D/g, '');
+    if(ra.length > 9){
+        ra = ra.slice(0, 9);
+    }
+    ra = ra.replace(/(\d{3})(\d)/,'$1.$2')
+    .replace(/(\d{3})\.(\d{3})(\d)/,'$1.$2.$3')
+    .replace(/(\d{3})\.(\d{3})\.(\d{3})/,'$1.$2.$3')
+    input.value = ra;
+}
+function validationRA(input){
+    let ra = document.getElementById("ra").value;
+    let regex = /(^\d{3}\.\d{3}\.\d{3}$)/;
+    let showResultRA = document.getElementById("showResultRA");
+    if(resultRA = regex.test(ra)){
+        showResultRA.textContent = "valido";
+        showResultRA.style.color = "green";
+    }else{
+        showResultRA.textContent = "invalido";
+        showResultRA.style.color = "red"
+    }
+}
+function correctionName(input){
+    let name = input.value.replace(/^[A-Z]+$/,'');
+
+    if(name.length > 40){
+        name = name.slice(0, 40);
+    }
+
+    input.value = name;
+}
 document.getElementById("#").addEventListener("submit", function(event) {
     event.preventDefault(); // Para prevenir o envio do formulário
 
