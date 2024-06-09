@@ -23,7 +23,7 @@ function validationRG(input) {
 
     // verifica se o RG segue o padrão da regex
     let showResultRG = document.getElementById("showResultRG");
-    if (showResultRG = regex.test(rg)) {
+    if (resultRG = regex.test(rg)) {
         showResultRG.textContent = "Válido\u2714\uFE0F";
         showResultRG.style.color = "green";
     } else {
@@ -50,11 +50,11 @@ function validationCPF(input){
     let regex = /(^\d{3}\.\d{3}\.\d{3}\-\d{2}$)/;
     let showResultCPF = document.getElementById("showResultCPF");
     if(resultCPF = regex.test(cpf)){
-        showResultCPF.textContent = "valido";
+        showResultCPF.textContent = "Válido\u2714\uFE0F";
         showResultCPF.style.color = "green";
     }else{
-        showResultCPF.textContent = "invalido";
-        showResultCPF.style.color = "red"
+        showResultCPF.textContent = "Inválido\u274C";
+        showResultCPF.style.color = "red";
     }
 }
 function correctionRA(input){
@@ -72,21 +72,53 @@ function validationRA(input){
     let regex = /(^\d{3}\.\d{3}\.\d{3}$)/;
     let showResultRA = document.getElementById("showResultRA");
     if(resultRA = regex.test(ra)){
-        showResultRA.textContent = "valido";
+        showResultRA.textContent = "Válido\u2714\uFE0F";
         showResultRA.style.color = "green";
     }else{
-        showResultRA.textContent = "invalido";
+        showResultRA.textContent = "Inválido\u274C";
         showResultRA.style.color = "red"
     }
 }
 function correctionName(input){
-    let name = input.value.replace(/^[A-Z]+$/,'');
+    let name = input.value.toUpperCase().replace(/[^A-Z\s]/g, '');
 
     if(name.length > 40){
         name = name.slice(0, 40);
     }
 
     input.value = name;
+}
+
+function corretionGrade(input){
+    let grade = input.value.replace(/\D/g, '')
+
+    if(grade.length > 4){
+        grade = grade.slice(0, 4);
+    }
+    input.value = grade;
+}
+function validationGrade(input){
+    let grade = document.getElementById("nota").value;
+    let regex = /^(0|[1-9][0-9]{0,2}|1000)$/;
+    let showResultGrade = document.getElementById("showResultGrade");
+    
+    if(resultGrade = regex.test(grade)){
+        showResultGrade.textContent = "Válido\u2714\uFE0F";
+        showResultGrade.style.color = "green";
+    }else{
+        showResultGrade.textContent = "Inválido\u274C";
+        showResultGrade.style.color = "red";
+    }
+}
+function corretionPhone(input){
+    let phone = input.value.replace(/\D/g, '');
+    if(phone.length > 11){
+        phone = phone.slice(0, 11);
+    }
+    phone = phone.replace(/\+\d{2}\s\(\d)/,'($1)$2')
+    .replace(/\+\d{2}\s\(\d{2}\)\d{4,5}-?\d{4}/g,'$1.$2-$3');
+    input.value = phone;
+
 }
 document.getElementById("#").addEventListener("submit", function(event) {
     event.preventDefault(); // Para prevenir o envio do formulário
