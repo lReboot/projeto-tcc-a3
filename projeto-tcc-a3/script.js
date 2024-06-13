@@ -101,7 +101,7 @@ function validationGrade(input){
     let grade = document.getElementById("nota").value;
     let regex = /^(0|[1-9][0-9]{0,2}|1000)$/;
     let showResultGrade = document.getElementById("showResultGrade");
-    
+
     if(resultGrade = regex.test(grade)){
         showResultGrade.textContent = "Válido\u2714\uFE0F";
         showResultGrade.style.color = "green";
