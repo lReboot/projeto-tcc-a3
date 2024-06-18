@@ -1,72 +1,72 @@
-@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap");
 
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
 }
 
 html,
 body {
-  display: grid;
-  height: 100%;
-  width: 100%;
-  place-items: center;
-  background: -webkit-linear-gradient(left, #a445b2, #fa4299)
+    display: grid;
+    height: 100%;
+    width: 100%;
+    place-items: center;
+    background: -webkit-linear-gradient(left, #a445b2, #fa4299);
 }
 
 ::selection {
-  background: #fa4299;
-  color: #fff;
+    background: #fa4299;
+    color: #fff;
 }
 
 .wrapper {
-  overflow: hidden;
-  max-width: 600px;
-  background: #fff;
-  padding: 30px;
-  border-radius: 5px;
-  box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    max-width: 600px;
+    background: #fff;
+    padding: 30px;
+    border-radius: 5px;
+    box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.1);
 }
 
 .wrapper .title-text {
-  display: flex;
-  width: 200%;
+    display: flex;
+    width: 200%;
 }
 
 .wrapper .title {
-  width: 50%;
-  font-size: 35px;
-  font-weight: 600;
-  text-align: center;
-  transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    width: 50%;
+    font-size: 35px;
+    font-weight: 600;
+    text-align: center;
+    transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
 .buttons-container {
-  overflow: hidden;
+    overflow: hidden;
 }
 
 .custom-button {
-  font-size: 20px;
-  background: #ff5ca1;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  padding: 10px 20px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  cursor: pointer;
-  float: left;
-  margin-right: 10px;
+    font-size: 20px;
+    background: #ff5ca1;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    float: left;
+    margin-right: 10px;
 }
 
 .custom-button:hover {
-  background-color: #fd3276;
+    background-color: #fd3276;
 }
 
 .title.login {
-  font-weight: bold;
-  font-size: 30px;
-  margin-top: 20px;
-  margin-bottom: 40px;
+    font-weight: bold;
+    font-size: 30px;
+    margin-top: 20px;
+    margin-bottom: 40px;
 }
