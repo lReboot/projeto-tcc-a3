@@ -1,29 +1,19 @@
-<?php 
-    if(isset($_POST['submit']))
-    {
-        print_r($_POST['nome'])
-        print_r($_POST['ra'])
-        print_r($_POST['cpf'])
-    }
-?>
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
     <head>
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-        <link
-            rel="stylesheet"
-            href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"
-        />
-
         <link rel="stylesheet" href="style.css" />
-
+        <link
+            rel="icon"
+            href="imagens/logo-cad-aluno.jpg"
+            type="image/x-icon"
+        />
         <link
             rel="stylesheet"
-            href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"
+            href="https://cdn.jsdelivr.net/npm/unicons/dist/css/unicons.css"
         />
 
         <title>Cadastro de Alunos</title>
@@ -31,17 +21,20 @@
     <body>
         <div class="container">
             <header>Cadastro de Alunos</header>
-
-            <form action="#">
+            <form
+                action="config.php"
+                method="post"
+                enctype="multipart/form-data"
+            >
                 <div class="form first">
                     <div class="details personal">
                         <span class="title">Dados Pessoais</span>
 
                         <div class="fields">
                             <div class="input-field">
-                                <label>Name</label>
+                                <label>Nome</label>
                                 <input
-                                    id="name"
+                                    id="nome"
                                     name="nome"
                                     type="text"
                                     placeholder="Insira seu Nome"
@@ -54,6 +47,7 @@
                                 <label>RA</label>
                                 <input
                                     type="text"
+                                    name="ra"
                                     placeholder="Insira seu RA"
                                     id="ra"
                                     oninput="correctionRA(this); validationRA(this)"
@@ -65,8 +59,9 @@
                             <div class="input-field">
                                 <label>Data de Nascimento</label>
                                 <input
+                                    id="date"
                                     type="date"
-                                    placeholder="Insira sua data de nascimento"
+                                    name="data_nascimento"
                                     required
                                 />
                             </div>
@@ -75,7 +70,7 @@
                                 <label>CPF</label>
                                 <input
                                     type="text"
-                                    name="CPF"
+                                    name="cpf"
                                     id="cpf"
                                     placeholder="Insira seu CPF"
                                     oninput="correctionCPF(this); validationCPF(this)"
@@ -88,7 +83,7 @@
                                 <label>RG</label>
                                 <input
                                     id="rg"
-                                    name="RG"
+                                    name="rg"
                                     type="text"
                                     placeholder="Insira seu RG"
                                     oninput="correctionRG(this); validationRG(this)"
@@ -100,21 +95,17 @@
                             <div class="input-field">
                                 <label>Nota no vestibular</label>
                                 <input
-                                    id="grade"
-                                    type="text"
+                                    id="nota_vestibular"
+                                    type="number"
+                                    name="nota_vestibular"
                                     placeholder="Insira sua Nota"
-                                    oninput="corretionGrade(this); validationGrade(this)"
                                     required
                                 />
                             </div>
 
                             <div class="input-field">
                                 <label>Documento</label>
-                                <input
-                                    type="file"
-                                    placeholder="Insira um documento em arquivo"
-                                    required
-                                />
+                                <input type="file" name="documento" required />
                             </div>
 
                             <div class="input-field">
@@ -124,27 +115,24 @@
                                     name="email"
                                     id="email"
                                     placeholder="Insira seu email"
-                                    oninput="validationEmail(this)"
                                     required
                                 />
-                                <p id="showResultEmail"></p>
-
                             </div>
 
                             <div class="input-field">
                                 <label>Telefone</label>
                                 <input
-                                    type="number"
-                                    placeholder="Insira seu numero de telefone"
-                                    oninput="correctionPhone(this); validationPhone(this)"
+                                    id="telefone"
+                                    type="tel"
+                                    name="telefone"
+                                    placeholder="Insira seu número de telefone"
                                     required
                                 />
-                                <p id="showResultPhone"></p>
                             </div>
 
                             <div class="input-field">
                                 <label>Curso</label>
-                                <select required>
+                                <select name="curso" id="curso" required>
                                     <option disabled selected>
                                         Selecione o seu curso
                                     </option>
@@ -167,19 +155,21 @@
                             <div class="input-field">
                                 <label>Logradouro</label>
                                 <input
+                                    id="logradouro"
                                     type="text"
-                                    placeholder="Insira a Região"
-                                    oninput="correctionStreet(this)"
+                                    name="logradouro"
+                                    placeholder="Insira o logradouro"
                                     required
                                 />
-
                             </div>
 
                             <div class="input-field">
-                                <label>Numero</label>
+                                <label>Número</label>
                                 <input
+                                    id="numero"
                                     type="number"
-                                    placeholder="Numero de endereço"
+                                    name="numero"
+                                    placeholder="Número de endereço"
                                     required
                                 />
                             </div>
@@ -187,37 +177,38 @@
                             <div class="input-field">
                                 <label>Bairro</label>
                                 <input
+                                    id="bairro"
                                     type="text"
+                                    name="bairro"
                                     placeholder="Insira seu bairro"
-                                    oninput="correctionDistrict(this)"
                                     required
                                 />
-
                             </div>
 
                             <div class="input-field">
                                 <label>Complemento</label>
                                 <input
+                                    id="complemento"
                                     type="text"
-                                    placeholder="Informação extre do endereço"
-                                    oninput="correctionComplement(this)"
+                                    name="complemento"
+                                    placeholder="Informação extra do endereço"
                                 />
                             </div>
 
                             <div class="input-field">
                                 <label>CEP</label>
                                 <input
+                                    id="cep"
                                     type="text"
+                                    name="cep"
                                     placeholder="Insira o CEP do endereço"
-                                    oninput="correctionCEP(this); validationCEP(this)"
                                     required
                                 />
-                                <p id="showResultCEP"></p>
                             </div>
 
                             <div class="input-field">
                                 <label>Estado</label>
-                                <select required>
+                                <select name="estado" id="estado" required>
                                     <option disabled selected>
                                         Selecione seu estado
                                     </option>
@@ -261,32 +252,27 @@
                             <div class="input-field">
                                 <label>Cidade</label>
                                 <input
+                                    id="cidade"
                                     type="text"
+                                    name="cidade"
                                     placeholder="Insira sua cidade por extenso"
-                                    oninput="correctionCity(this)"
                                     required
                                 />
                             </div>
                         </div>
 
-                        <button class="nextBtn">
-                            <span class="btnText">Próximo</span>
+                        <button
+                            class="submit"
+                            type="submit"
+                            name="submit"
+                            id="button"
+                        >
+                            <span class="btnText">Enviar</span>
                             <i class="uil uil-navigator"></i>
                         </button>
-                        <button type="reset" id="buttonLim">Limpar Campos</button>
-                    </div>
-                </div>
-                        <div class="buttons">
-                            <div class="backBtn">
-                                <i class="uil uil-navigator"></i>
-                                <span class="btnText">Back</span>
-                            </div>
-
-                            <button class="sumbit" type="submit" id="button">
-                                <span class="btnText">Enviar</span>
-                                <i class="uil uil-navigator"></i>
-                            </button>
-                        </div>
+                        <button type="reset" id="buttonLim" name="clean">
+                            Limpar Campos
+                        </button>
                     </div>
                 </div>
             </form>
